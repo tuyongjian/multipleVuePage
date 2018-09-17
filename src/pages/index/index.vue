@@ -6,7 +6,7 @@
     千米 : <input type = "text" v-model = "kilometers">
     米 : <input type = "text" v-model = "meters">
     <br>
-<a href="/home.html">点我</a>
+    <a window.location.href ="/home.html">点我</a>
   </div>
 </template>
 
@@ -14,7 +14,6 @@
   export default {
     name: 'App',
     components: {
-      parent
     },
     data (){
       return{
