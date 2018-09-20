@@ -1,4 +1,6 @@
 'use strict'
 module.exports = {
-  NODE_ENV: '"production"'//生产环境
+  NODE_ENV: '"production"',//生产环境
+
+  API_ROOT: '"https://i.gtja.com/promotion"'
 }

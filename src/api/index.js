@@ -1,8 +1,10 @@
 
 import axios from 'axios';
+// 配置API接口地址
+const root = process.env.API_ROOT
 
 var http = axios.create({
-  baseURL: '/api',
+  baseURL: root,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
