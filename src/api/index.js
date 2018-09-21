@@ -13,12 +13,44 @@ var http = axios.create({
     var newData = '';
     for (var k in data) {
       if (data.hasOwnProperty(k) === true) {
-        newData += encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) + '&';
+          newData += encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) + '&';
       }
     }
-    return newData;
+    return newData.slice(0,newData.length-1);
   }
 });
+
+
+///////////////////////////////
+//
+// 拦截器的实例要和axios保持一致
+// 例如 上面定义了一个 axios实例叫做 http
+// 所以 下面的拦截器也定义为 http.interceptors
+//////////////////////////////
+//http request 拦截器
+http.interceptors.request.use(
+  config => {
+    return config;
+  }, error => {
+    return Promise.reject(error);
+  }
+);
+
+//http response 拦截器
+http.interceptors.response.use(
+  response => {
+    console.log("----------------"+response.status)
+    console.log("----------------"+response.data.success);
+    if(response.data.success===false){
+      alert(response.data.message);
+    }
+    return response;
+  },error => {
+    console.log("----------------"+error.response.status)
+    console.log("----------------"+error.response.data)
+    return Promise.reject(error)
+  }
+)
 
 function apiAxios(method, url, params, response) {
   http({

@@ -2,7 +2,7 @@
   <div id="app">
    <span>index</span>
     <br>
-    <a href="./home.html">点我</a>
+    <a window.location.href ="/home.html">点我</a>
 
     <br>
     <button v-on:click="ajaxTest">ajaxTest</button>
@@ -15,12 +15,8 @@
     components: {},
     methods: {
       ajaxTest: function () {
-        this.$http.post('/ssm/user/queryById', {"age":10,"userName":"javen"}, response => {
-          if (response.status >= 200 && response.status < 300) {
-            console.log(response.data[0].userName);
-          } else {
-            console.log(response.message);
-          }
+        this.$http.post('/ssm/user/query', {"age": 10, "userName": "javen"}, response => {
+            console.log(11111);
         });
       }
     }
